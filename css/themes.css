@@ -1,0 +1,359 @@
+/* Theme Variables */
+:root[data-theme="dark"] {
+    --bg-primary: #1a1a2e;
+    --text-primary: #ffffff;
+    --card-bg: #16213e;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --section-bg: #1a1a2e;
+    --text-muted: #a0a0a0;
+    --card-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+  }
+  
+  :root[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --text-primary: #000000;
+    --card-bg: #ffffff;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --section-bg: #f8f9fa;
+    --text-muted: #636e72;
+    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Base card styles */
+  .skill-category,
+  .card,
+  .story-card,
+  .info-card {
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+    box-shadow: var(--card-shadow) !important;
+  }
+  
+  /* Force navbar text color */
+  .navbar-nav .nav-link,
+  .navbar-brand {
+    color: #ffffff !important;
+  }
+  
+  /* Dark Mode Sections */
+  [data-theme="dark"] .about {
+    background-color: var(--section-bg) !important;
+  }
+  
+  [data-theme="dark"] .projects {
+    background-color: var(--section-bg) !important;
+  }
+  
+  [data-theme="dark"] .skills-section {
+    background-color: var(--section-bg) !important;
+  }
+  
+  /* Dark Mode Card Text Elements */
+  [data-theme="dark"] .skill-category *,
+  [data-theme="dark"] .card *,
+  [data-theme="dark"] .story-card *,
+  [data-theme="dark"] .info-card *,
+  [data-theme="dark"] .card-title,
+  [data-theme="dark"] .card-text,
+  [data-theme="dark"] .skill-item *,
+  [data-theme="dark"] .category-title,
+  [data-theme="dark"] .interest-category p,
+  [data-theme="dark"] .institution,
+  [data-theme="dark"] .coursework-title,
+  [data-theme="dark"] .coursework li {
+    color: var(--text-primary) !important;
+  }
+  
+  /* Keep icon colors */
+  .card-icon {
+    color: #007bff !important;
+  }
+  
+  /* Small text and muted text */
+  [data-theme="dark"] small,
+  [data-theme="dark"] .text-muted {
+    color: var(--text-muted) !important;
+  }
+  
+  /* Base Theme Styles */
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+  }
+  
+  /* Navbar Style */
+  .navbar {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+  }
+  
+  /* Contact Section */
+  .contact-section {
+    background-color: var(--section-bg);
+  }
+  
+  .contact-container {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+  }
+  
+  /* Form Elements */
+  [data-theme="dark"] .form-control {
+    background-color: var(--bg-primary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+  }
+  
+  [data-theme="dark"] .form-control::placeholder {
+    color: var(--text-muted) !important;
+  }
+  
+  /* Headings */
+  [data-theme="dark"] h1,
+  [data-theme="dark"] h2,
+  [data-theme="dark"] h3,
+  [data-theme="dark"] h4,
+  [data-theme="dark"] h5,
+  [data-theme="dark"] h6,
+  [data-theme="dark"] p {
+    color: var(--text-primary) !important;
+  }
+  
+  /* Badge colors in dark mode */
+  [data-theme="dark"] .badge {
+    opacity: 0.8;
+  }
+  
+  /* Card hover effects */
+  .card:hover,
+  .skill-category:hover,
+  .info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow) !important;
+  }
+  
+  /* Transitions */
+  .card,
+  .info-card,
+  .story-card,
+  .skill-category,
+  .navbar,
+  .contact-container,
+  section {
+    transition: all 0.3s ease !important;
+  }
+  
+  /* Info Cards Dark Mode Styles */
+  [data-theme="dark"] .info-card {
+    background-color: var(--card-bg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: var(--card-shadow) !important;
+  }
+  
+  /* Education Card */
+  [data-theme="dark"] .info-card .institution {
+    color: #ffffff !important;
+    font-weight: 600;
+  }
+  
+  [data-theme="dark"] .info-card .major,
+  [data-theme="dark"] .info-card .gpa {
+    color: #a8b2d1 !important;
+  }
+  
+  [data-theme="dark"] .coursework-title {
+    color: #ffffff !important;
+  }
+  
+  [data-theme="dark"] .coursework li {
+    color: #a8b2d1 !important;
+  }
+  
+  /* Skills & Achievements Card */
+  [data-theme="dark"] .info-card .category-title {
+    color: #ffffff !important;
+    font-weight: 600;
+  }
+  
+  [data-theme="dark"] .interest-category p:not(.category-title) {
+    color: #a8b2d1 !important;
+  }
+  
+  /* Hobbies & Interests Card */
+  [data-theme="dark"] .info-card.interests .category-title {
+    color: #ffffff !important;
+    font-weight: 600;
+  }
+  
+  [data-theme="dark"] .info-card.interests .interest-category p:not(.category-title) {
+    color: #a8b2d1 !important;
+  }
+  
+  /* Card Icon */
+  [data-theme="dark"] .card-icon {
+    color: #007bff !important;
+  }
+  
+  /* Hover Effects */
+  [data-theme="dark"] .info-card:hover {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    transform: translateY(-5px);
+  }
+  
+  /* Card Headings */
+  [data-theme="dark"] .info-card h5 {
+    color: #ffffff !important;
+    font-weight: 600;
+  }
+  
+  /* Dark mode text colors for skill categories */
+  [data-theme="dark"] .skill-category {
+    background-color: var(--card-bg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+  
+  /* Category titles */
+  [data-theme="dark"] .skill-category .h5.mb-0 {
+    color: #ffffff !important;
+  }
+  
+  /* Skill titles */
+  [data-theme="dark"] .skill-item .fw-bold {
+    color: #ffffff !important;
+  }
+  
+  /* Skill descriptions */
+  [data-theme="dark"] .skill-item .skill-description {
+    color: #a8b2d1 !important;
+    font-size: 0.875rem;
+  }
+  
+  /* Badge styling */
+  [data-theme="dark"] .badge {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Icons */
+  [data-theme="dark"] .skill-category .fas {
+    color: #007bff !important;
+  }
+  
+  /* Hover effects */
+  [data-theme="dark"] .skill-category:hover {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1) !important;
+  }
+  
+  /* Force all navbar text to be white */
+  .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 1) !important;
+  }
+  
+  .navbar-brand {
+    color: white !important;
+  }
+  
+  
+  /* Normal state - white */
+  #theme-toggle i.fa-sun,
+  #theme-toggle i.fa-moon {
+    color: white !important;
+  }
+  
+  /* Hover states */
+  #theme-toggle:hover i.fa-sun {
+    color: #FFD700 !important;  
+    transition: color 0.3s ease;
+  }
+  
+  #theme-toggle:hover i.fa-moon {
+    color: #87CEEB !important;  
+    transition: color 0.3s ease;
+  }
+  
+  
+  
+  #Contact section
+  
+  /* Base styles for contact container */
+  .contact-container {
+    background-color: rgba(255, 255, 255, 0.9) !important; /* Light background for light mode */
+    border-radius: 10px;
+    box-shadow: var(--card-shadow) !important;
+    transition: all 0.3s ease;
+  }
+  
+  /* Dark mode styles for contact container */
+  [data-theme="dark"] .contact-container {
+    background-color: rgba(0, 0, 0, 0.8) !important; /* Dark background for dark mode */
+    border: 1px solid #FFFFFF !important; /* White border for dark mode */
+  }
+  
+  /* Ensure text remains readable */
+  [data-theme="light"] .contact-section {
+    color: #000000 !important;
+  }
+  
+  [data-theme="dark"] .contact-section {
+    color: #FFFFFF !important;
+  }
+  
+  /* Adjusted box shadow colors for better visibility */
+  section#contact .contact-container {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important; /* Darker shadow for light mode */
+  }
+  
+  /* Dark mode with a lighter, more visible shadow */
+  [data-theme="dark"] section#contact .contact-container {
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2) !important; /* Whiter shadow for dark mode */
+  }
+  
+  /* Optional hover states for more emphasis */
+  section#contact .contact-container:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  [data-theme="dark"] section#contact .contact-container:hover {
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25) !important;
+  }
+  
+  
+  /* Theme Variables */
+  :root[data-theme="dark"] {
+    --bg-primary: #1a1a2e;
+    --text-primary: #ffffff;
+    --card-bg: #16213e;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --section-bg: #1a1a2e;
+    --text-muted: #a0a0a0;
+    --card-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    --box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* White shadow for dark mode */
+  }
+  
+  :root[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --text-primary: #000000;
+    --card-bg: #ffffff;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --section-bg: #f8f9fa;
+    --text-muted: #636e72;
+    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Black shadow for light mode */
+  }
+  
+  /* Apply box-shadow to specific elements */
+  .contact-container {
+    box-shadow: var(--box-shadow) !important;
+  }
+  
+  
+  
