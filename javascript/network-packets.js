@@ -41,8 +41,51 @@
       // Initialize context
       const ctx = canvas.getContext('2d');
       
-      // Packets array and variables
-      let packets = Array(25).fill().map(() => createPacket());
+      // Create a new packet (for ongoing animation)
+      function createPacket(startPosition = 'offscreen') {
+        const size = Math.random() * 30 + 10; // Random size between 10-40px
+        const speed = Math.random() * 2 + 1.2; // Slightly faster minimum speed (1.2-3.2)
+        const y = Math.random() * height; // Random vertical position
+        
+        // Determine starting x position
+        let x;
+        if (startPosition === 'offscreen') {
+          x = -size; // Start off-screen to the left (original behavior)
+        } else {
+          x = Math.random() * width; // Random position across the screen width
+        }
+        
+        return {
+          x,
+          y,
+          width: size * (Math.random() * 2 + 1), // Make width 1-3x the size
+          height: size / (Math.random() * 3 + 2), // Make height a fraction of size
+          speed,
+          opacity: Math.random() * 0.5 + 0.1, // Random opacity between 0.1-0.6
+          color: getRandomPacketColor(),
+          pulseDirection: Math.random() > 0.5 ? 1 : -1, // Direction of opacity pulse
+          pulseSpeed: Math.random() * 0.02 + 0.005, // Speed of opacity pulse
+          tailLength: Math.floor(Math.random() * 3) + 1, // Number of trailing elements
+          ip: generateRandomIP('ipv4'), // IPv4 only
+          dataType: Math.random() > 0.7 ? 'binary' : 'none', // 30% chance to show binary data
+          binaryData: Math.random() > 0.5 ? '01' : '10' // Simple binary representation
+        };
+      }
+      
+      // Initialize packets - many already on screen, some offscreen
+      let packets = [];
+      
+      // Create initial packets distributed across the screen
+      // Increased from 25 to 50 for much higher initial density
+      for (let i = 0; i < 50; i++) {
+        // Distribute about 85% of packets across the screen, 15% off-screen
+        const startPosition = i < 42 ? 'onscreen' : 'offscreen';
+        packets.push(createPacket(startPosition));
+      }
+      
+      // Sort packets by x position to maintain visual flow
+      packets.sort((a, b) => a.x - b.x);
+      
       let lastPacketTime = 0;
       let animationFrame;
       
@@ -53,10 +96,15 @@
         
         // Add new packets occasionally
         if (timestamp - lastPacketTime > 100) { // Every 100ms
-          if (Math.random() < 0.3) { // 30% chance to add a new packet
-            packets.push(createPacket());
+          if (Math.random() < 0.4) { // Increased from 30% to 40% chance to add a new packet
+            packets.push(createPacket('offscreen')); // New packets still start offscreen
             lastPacketTime = timestamp;
           }
+        }
+        
+        // Keep the packet count high after initialization
+        if (packets.length < 40 && Math.random() < 0.5) {
+          packets.push(createPacket('offscreen'));
         }
         
         // Update and draw packets
@@ -182,29 +230,6 @@
         });
         
         animationFrame = requestAnimationFrame(animate);
-      }
-      
-      // Create a new packet
-      function createPacket() {
-        const size = Math.random() * 30 + 10; // Random size between 10-40px
-        const speed = Math.random() * 2 + 1; // Random speed between 1-3
-        const y = Math.random() * height; // Random vertical position
-        
-        return {
-          x: -size, // Start off-screen to the left
-          y,
-          width: size * (Math.random() * 2 + 1), // Make width 1-3x the size
-          height: size / (Math.random() * 3 + 2), // Make height a fraction of size
-          speed,
-          opacity: Math.random() * 0.5 + 0.1, // Random opacity between 0.1-0.6
-          color: getRandomPacketColor(),
-          pulseDirection: Math.random() > 0.5 ? 1 : -1, // Direction of opacity pulse
-          pulseSpeed: Math.random() * 0.02 + 0.005, // Speed of opacity pulse
-          tailLength: Math.floor(Math.random() * 3) + 1, // Number of trailing elements
-          ip: generateRandomIP('ipv4'), // IPv4 only
-          dataType: Math.random() > 0.7 ? 'binary' : 'none', // 30% chance to show binary data
-          binaryData: Math.random() > 0.5 ? '01' : '10' // Simple binary representation
-        };
       }
       
       // Fallback for roundRect if not supported
